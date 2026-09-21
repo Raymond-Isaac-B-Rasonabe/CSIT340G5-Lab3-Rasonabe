@@ -1,4 +1,4 @@
-const Header = ({ course }) => <h1>{course}</h1>
+const Header = ({ course }) => <h1>{course.name}</h1>
 
 const Content = ({ parts }) => (
   <div>
@@ -17,8 +17,9 @@ const Total = ({ parts }) => (
 )
 
 const App = () => {
-  const course = 'CSIT340: Industry Elective 1'
-  const parts = [
+  const course = {
+  name : 'CSIT340: Industry Elective 1',
+  parts: [
     {
       name: 'Information Management 2',
       exercises: 3
@@ -36,12 +37,13 @@ const App = () => {
       exercises: 12
     }
   ]
+}
 
   return (
     <div>
       <Header course={course} />
-      <Content parts={parts} />
-      <Total parts={parts} />
+      <Content parts={course.parts} />
+      <Total parts={course.parts} />
     </div>
   )
 }
