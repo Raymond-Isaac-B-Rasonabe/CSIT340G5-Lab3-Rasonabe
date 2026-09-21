@@ -1,30 +1,47 @@
+const Header = ({ course }) => <h1>{course}</h1>
+
+const Content = ({ parts }) => (
+  <div>
+    {parts.map(part => (
+      <p key={part.name}>
+        {part.name} {part.exercises}
+      </p>
+    ))}
+  </div>
+)
+
+const Total = ({ parts }) => (
+  <p>
+    Number of exercises {parts.reduce((sum, part) => sum + part.exercises, 0)}
+  </p>
+)
+
 const App = () => {
   const course = 'CSIT340: Industry Elective 1'
-  const part1 = {
-    name: 'Data Analytics 1',
-    exercises: 3
-  }
-  const part2 = {
-    name: 'Project Management for IT',
-    exercises: 3
-  }
-  const part3 = {
-    name: 'Information Management 2',
-    exercises: 3
-  }
-  const footer = {
-    name: 'Raymond Isaac B. Rasonabe - CSIT340 - G5'
-  }
-  
+  const parts = [
+    {
+      name: 'Information Management 2',
+      exercises: 3
+    },
+    {
+      name: 'Project Management for IT',
+      exercises: 3
+    },
+    {
+      name: 'Industry Elective 1',
+      exercises: 3
+    },
+    {
+      name: 'Raymond Isaac B. Rasonabe - CSIT340  - G5',
+      exercises: 12
+    }
+  ]
+
   return (
     <div>
       <Header course={course} />
-      <Content
-        part1={part1}
-        part2={part2}
-        part3={part3}
-        footer={footer}
-      />
+      <Content parts={parts} />
+      <Total parts={parts} />
     </div>
   )
 }
